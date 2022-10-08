@@ -93,3 +93,8 @@ export const getSelectedVehicleAppointment = async (req, res) => {
     const vehicle = await VehicleAppointmentModel.findOne({ _id: req.body.id });
     res.send(vehicle);
 }
+
+export const getAllDriving = async (req, res, next) => {
+    const vehicles = await VehicleAppointmentModel.find({state:"driving"});
+    res.send(vehicles);
+}

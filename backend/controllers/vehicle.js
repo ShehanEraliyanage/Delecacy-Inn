@@ -86,7 +86,7 @@ export const getSelectedVehicle = async (req, res) => {
 }
 
 export const getAllavalable = async (req, res, next) => {
-    const vehicles = await VehicleModel.find({state:"Avalable"});
+    const vehicles = await VehicleModel.find({state:"Available"});
     res.send(vehicles);
 }
 

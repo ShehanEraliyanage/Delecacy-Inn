@@ -37,7 +37,7 @@ export default function V_M_ViewVehicles() {
   function deleteMyVehicle(id) {
     swal({
       title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this imaginary file!",
+      text: "Once   , you will not be able to recover this imaginary file!",
       icon: "warning",
       buttons: true,
       dangerMode: true,

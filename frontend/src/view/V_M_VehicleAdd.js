@@ -82,12 +82,12 @@ export default function V_M_VehicleAdd() {
         vehicleNumber: vehicleNumber,
         driver: driverList.label,
         vehicleCapacity: vehicleCapacity,
-        state: "Avalable",
+        state: "Available",
       }).then((result) => {
         if (result.status) {
           swal({
             title: "Success!",
-            text: "New Customer Add Successfully",
+            text: "New Vehicle Add Successfully",
             icon: "success",
             timer: 2000,
             button: false,

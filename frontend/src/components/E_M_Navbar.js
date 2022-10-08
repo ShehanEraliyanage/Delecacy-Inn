@@ -61,17 +61,14 @@ export default function E_M_Navbar() {
 
                     </li>
 
-                    <li class="sidebar-item">
-                        <a data-bs-target="#profile" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                            <i class="align-middle me-2 fas fa-fw fa-user"></i> <span class="align-middle">My Profile</span>
-                        </a>
-                        <ul id="profile" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-                            <li class="sidebar-item"><a class="sidebar-link" href="packagePage">Profile Settings</a></li>
-                            <li class="sidebar-item"><a class="sidebar-link" href="packageTypePage">Sign Out</a></li>
-                        </ul>
+                    
+
+                    <li class="sidebar-item ">
+                        <Link class="sidebar-link"to='/employeeDashboard'>
+                            <i class="align-middle me-2 fas fa-fw fa-home"></i> <span class="align-middle">Logout</span>
+                        </Link>
+
                     </li>
-
-
 
 
             

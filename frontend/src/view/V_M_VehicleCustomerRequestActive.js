@@ -20,18 +20,21 @@ import "datatables.net-dt/css/jquery.dataTables.min.css";
 import $ from "jquery";
 
 // Controllers
-import { getAllVehicles } from "../controllers/vehicles";
-import { getAllVehicleBooking } from '../controllers/vehicleBooking';
+
+import { getAllDriving } from '../controllers//vehicleAppointment';
 
 export default function V_M_VehicleAppointmentView() {
 
-  const [vehicleBookingList, setVehicleBookingList] = useState([]);
-  const [vehicleList, setVehicleSelect] = useState([]);
-  
+  const [vehicleAppointmentList, setVehicleAppointmentList] = useState([]);
 
+  const [endDate, setEndDate] = useState('');
+  const [endTime, setEndTime] = useState('');
+  const [amount, setAmount] = useState('');
+
+  
   useEffect(() => {
-    getAllVehicleBooking().then((result) => {
-        setVehicleBookingList(result);
+    getAllDriving().then((result) => {
+        setVehicleAppointmentList(result);
 
         //initialize datatable
         $(document).ready(function () {
@@ -39,20 +42,12 @@ export default function V_M_VehicleAppointmentView() {
         });
     });
 
-    getAllVehicles().then((result) =>{
-        
-      setVehicleSelect(result);
-
-        //initialize datatable
-        $(document).ready(function () {
-            $('#example').DataTable();
-        });
-
-
-
-    })
-
 }, [])
+
+function UpdateVehicleAppointment () {
+  window.location.replace(reactBaseURL + "/vehicle-customer-request");
+}
+
 
 function pending() {
   window.location.replace(reactBaseURL + "/vehicle-customer-request");
@@ -82,7 +77,7 @@ function done() {
             <div class="btn-group  mb-3" role="group" aria-label="Large button group">
                                 
                                 <button onClick={() => pending()} type="button" class="btn btn-secondary">Pending</button>
-                                <button onClick={() => active()} type="button" class="btn btn-secondary">Active</button>
+                                <button onClick={() => active()} type="button" class="btn btn-secondary">Ongoing</button>
                                 <button onClick={() => done()} type="button" class="btn btn-secondary">Done</button>
                             </div>
             </div>
@@ -97,20 +92,28 @@ function done() {
                         <th>Pick Up</th>
                         <th>Pick up Date</th>
                         <th>Pick up time</th>
-                        <th>Requested Vehicle Type</th>
+                        <th>End Date</th>
+                        <th>End Time</th>
+                        <th>Vehicle </th>
+                        <th>Ammount </th>
+                        <th>Action </th>
                       </tr>
                     </thead>
                     <tbody>
                    
-                      {vehicleBookingList.map((value, index)=> {
+                      {vehicleAppointmentList.map((value, index)=> {
                         return (
                           <tr key={index} >
                             <td>{value.nic}</td>
-                            <td>{value.places}</td>
-                            <td>{value.date}</td>
-                            <td>{value.time}</td>
-                            <td>{value.type}</td>
-                            <td>{value.identification}</td>
+                            <td>{value.pickupPlace}</td>
+                            <td>{value.pickupDate}</td>
+                            <td>{value.pickupTime}</td>
+                            <td><input type="date"class="form-control" ></input></td>
+                            <td><input type="date"class="form-control" ></input></td>
+                            <td>{value.VehicleSelected}</td>
+                            <td><input type="number"class="form-control" ></input></td>
+                            <td class="table-action" ><button class="btn btn-pill btn-success btn-sm"
+                            onClick={() => UpdateVehicleAppointment()}>Confirm</button></td>
 
                           </tr>
                         );

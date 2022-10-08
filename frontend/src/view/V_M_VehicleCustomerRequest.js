@@ -79,7 +79,14 @@ export default function V_M_VehicleAppointmentView() {
     await confirmVehicleBooking(newItem).then((res) => {
       editVehicleAppointmentState(vehicleBookingId).then((res) => {
         editVehicleState(vehicleId).then((res) => {
-          swal("Details inserted")
+          swal({
+            title: "Success!",
+            text: "Trip Started Successfully",
+            icon: "success",
+            timer: 2000,
+            button: false,
+          });
+          window.location.replace(reactBaseURL + "/vehicle-customer-request");
         })
       })
     })
@@ -127,7 +134,7 @@ async function onChangeVehicle(e) {
             <div class="btn-group  mb-3" role="group" aria-label="Large button group">
                                 
                                 <button onClick={() => pending()} type="button" class="btn btn-secondary">Pending</button>
-                                <button onClick={() => active()} type="button" class="btn btn-secondary">Active</button>
+                                <button onClick={() => active()} type="button" class="btn btn-secondary">Ongoing</button>
                                 <button onClick={() => done()} type="button" class="btn btn-secondary">Done</button>
                             </div>
             </div>
